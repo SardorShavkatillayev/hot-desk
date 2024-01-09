@@ -27,28 +27,28 @@ public class DeskController
     }
 
     @GetMapping
-    public ResponseEntity<?> get( Pageable pageable, @RequestParam String predicate )
+    public ResponseEntity<?> getAll( Pageable pageable, @RequestParam(required = false) String predicate )
     {
         Page<DeskResponseDto> all = deskService.getAll( pageable, predicate );
         return ResponseEntity.ok( all );
     }
 
     @GetMapping( "/{id}" )
-    public ResponseEntity<?> get( @PathVariable Integer id )
+    public ResponseEntity<?> getdesk( @PathVariable Integer id )
     {
         DeskResponseDto deskResponseDto = deskService.getById( id );
         return ResponseEntity.ok( deskResponseDto );
     }
 
     @PutMapping( "/{id}" )
-    public ResponseEntity<?> get( @PathVariable Integer id, @Valid @RequestBody DeskUpdateDto dto )
+    public ResponseEntity<?> update( @PathVariable Integer id, @Valid @RequestBody DeskUpdateDto dto )
     {
         DeskResponseDto deskResponseDto = deskService.update( id, dto );
         return ResponseEntity.ok( deskResponseDto );
     }
 
     @PatchMapping( "/{id}" )
-    public ResponseEntity<?> get( @PathVariable Integer id, @RequestBody DeskPatchDto dto ) throws NoSuchFieldException, IllegalAccessException
+    public ResponseEntity<?> patch( @PathVariable Integer id, @RequestBody DeskPatchDto dto ) throws NoSuchFieldException, IllegalAccessException
     {
         DeskResponseDto deskResponseDto = deskService.patch( id, dto );
         return ResponseEntity.ok( deskResponseDto );

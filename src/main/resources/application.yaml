@@ -1,13 +1,27 @@
-server:
-  port: 8087
-  servlet:
-    context-path: /api/v1
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://db.tmwobpisqsvsxkebkapn.supabase.co:5432/postgres
+#    username: postgres
+#    password: Z~8jW$H3S8pvnb~
+
+
+#7535
+
+#udemy:
+#  security:
+#    jwt-secret: FpSQGCGp1bUvEQlL6UVBFSdku7/zR6uRU4Tf4tlONYoXIMilfiwzCjSPp9++4dRG
+
+#udemyy:
+#  sms:
+#    eskiz:
+#      email: sardorshavkatillayev@gmail.com
+#      password: KICqtQiiNK4b8GmhR35uOKzt0QMg8v6oMdg2CMHM
+
 spring:
   datasource:
-    port: 8088
-    url: jdbc:postgresql://localhost:${spring.datasource.port}/postgres
+    url: jdbc:postgresql://localhost:5432/example
     username: postgres
-    password: postgres
+    password: sardor2003
   jpa:
     properties:
       hibernate:
@@ -15,3 +29,8 @@ spring:
         show_sql: true
     hibernate:
       ddl-auto: update
+
+server:
+  servlet:
+    context-path: /api/v1
+

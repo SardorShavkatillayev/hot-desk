@@ -15,34 +15,31 @@ import org.springframework.stereotype.Service;
 @Getter
 @Service
 @RequiredArgsConstructor
-public class DeskService extends GenericCrudService<Desk, Integer, DeskCreateDto, DeskUpdateDto, DeskPatchDto, DeskResponseDto>
-{
+public class DeskService extends GenericCrudService<Desk, Integer, DeskCreateDto, DeskUpdateDto, DeskPatchDto, DeskResponseDto> {
     private final DeskDtoMapper mapper;
     private final DeskRepository repository;
     private final Class<Desk> entityClass = Desk.class;
     private final RoomRepository roomRepository;
 
     @Override
-    protected Desk save( DeskCreateDto dto )
-    {
-        Desk entity = mapper.toEntity( dto );
-        Room room = roomRepository.findById( dto.getRoomId() )
-                                  .orElseThrow( () -> throwEntityNotFoundException( dto.getRoomId(), Room.class.getSimpleName() ) );
-        entity.setRoom( room );
+    protected Desk save(DeskCreateDto dto) {
+        Desk desk = mapper.toEntity(dto);
+        Room room = roomRepository.findById(dto.getRoomId())
+                .orElseThrow(() -> throwEntityNotFoundException(dto.getRoomId(), Room.class.getSimpleName()));
+        desk.setRoom(room);
 
-        return repository.save( entity );
+        return repository.save(desk);
     }
 
     @Override
-    protected Desk updateEntity( DeskUpdateDto dto, Desk desk )
-    {
-        mapper.update( dto, desk );
+    protected Desk updateEntity(DeskUpdateDto dto, Desk desk) {
+        mapper.update(dto, desk);
 
-        Room room = roomRepository.findById( dto.getRoomId() )
-                                  .orElseThrow( () -> throwEntityNotFoundException( dto.getRoomId(), Room.class.getSimpleName() ) );
+        Room room = roomRepository.findById(dto.getRoomId())
+                .orElseThrow(() -> throwEntityNotFoundException(dto.getRoomId(), Room.class.getSimpleName()));
 
-        desk.setRoom( room );
-        return repository.save( desk );
+        desk.setRoom(room);
+        return repository.save(desk);
     }
 
 }

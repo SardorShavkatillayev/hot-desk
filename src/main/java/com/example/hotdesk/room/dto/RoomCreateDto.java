@@ -16,6 +16,7 @@ public class RoomCreateDto
     private Integer officeId;
     @NotBlank
     private String number;
+
     private RoomType roomType;
     @NotNull
     private Integer floorNumber;

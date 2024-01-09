@@ -5,6 +5,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SecurityConfiguration
 {
+
+
+
+
+
+
 // Room CRUD
 // Office CRUD
 // Desk CRUD

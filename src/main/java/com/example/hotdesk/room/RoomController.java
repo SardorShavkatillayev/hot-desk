@@ -27,7 +27,7 @@ public class RoomController
     }
 
     @GetMapping
-    public ResponseEntity<Page<RoomResponseDto>> getAllRoom( Pageable pageable, @RequestParam( required = false ) String predicate )
+    public ResponseEntity<Page<RoomResponseDto>> getAllRoom( Pageable pageable, @RequestParam( required = false  ) String predicate )
     {
         Page<RoomResponseDto> all = roomService.getAll( pageable, predicate );
         return ResponseEntity.ok( all );
@@ -41,13 +41,13 @@ public class RoomController
     }
 
     @PutMapping( "/{id}" )
-    public ResponseEntity<RoomResponseDto> updateRoom( @PathVariable Integer id, @RequestBody @Valid RoomUpdateDto updateDto )
+    public ResponseEntity<RoomResponseDto> updateRoom( @PathVariable Integer id,@Valid @RequestBody  RoomUpdateDto updateDto )
     {
         RoomResponseDto responseDto = roomService.update( id, updateDto );
         return ResponseEntity.ok( responseDto );
     }
 
-    @PatchMapping( "/{id}" )
+    @PatchMapping( "/patch/{id}" )
     public ResponseEntity<RoomResponseDto> patchRoom( @PathVariable Integer id, @RequestBody RoomPatchDto patchDto ) throws NoSuchFieldException, IllegalAccessException
     {
         RoomResponseDto responseDto = roomService.patch( id, patchDto );
